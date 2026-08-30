@@ -1,9 +1,10 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Terminal, Menu, Lock } from "lucide-react";
-import { motion } from "framer-motion";
+import { Terminal, Menu, Lock, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
   { name: "Tentang", href: "/about" },
@@ -16,6 +17,7 @@ const navLinks = [
 
 export function Navbar() {
   const pathname = usePathname();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
     <nav className="fixed top-0 w-full z-50 glass border-b border-white/5 transition-all duration-300">
@@ -62,11 +64,49 @@ export function Navbar() {
           >
             Terminal Mode <span className="ml-2 font-mono text-xs opacity-50">&gt;_</span>
           </motion.button>
-          <button className="md:hidden p-2 text-slate-300">
-            <Menu className="w-6 h-6" />
+          <button 
+            className="md:hidden p-2 text-slate-300"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
       </div>
+
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="md:hidden bg-slate-900/95 backdrop-blur-md border-b border-white/5 overflow-hidden"
+          >
+            <div className="container mx-auto px-6 py-4 flex flex-col gap-4">
+              {navLinks.map((link) => {
+                const isActive = pathname === link.href;
+                return (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className={`block px-4 py-2 rounded-lg transition-colors ${
+                      isActive ? "bg-brand-500/10 text-brand-400" : "text-slate-300 hover:bg-white/5 hover:text-white"
+                    }`}
+                  >
+                    {link.icon && link.icon}
+                    {link.name}
+                  </Link>
+                );
+              })}
+              <button 
+                className="flex items-center justify-center px-4 py-3 mt-2 text-sm font-medium text-brand-400 bg-brand-500/10 border border-brand-500/20 rounded-lg hover:bg-brand-500/20 transition-colors"
+              >
+                Terminal Mode <span className="ml-2 font-mono text-xs opacity-50">&gt;_</span>
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 }
