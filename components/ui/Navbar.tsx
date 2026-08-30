@@ -58,12 +58,6 @@ export function Navbar() {
         </div>
 
         <div className="flex items-center gap-4">
-          <motion.button 
-            whileTap={{ scale: 0.95 }}
-            className="hidden md:flex items-center justify-center px-4 py-2 text-sm font-medium text-brand-400 bg-brand-500/10 border border-brand-500/20 rounded-lg hover:bg-brand-500/20 transition-colors"
-          >
-            Terminal Mode <span className="ml-2 font-mono text-xs opacity-50">&gt;_</span>
-          </motion.button>
           <button 
             className="md:hidden p-2 text-slate-300"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}

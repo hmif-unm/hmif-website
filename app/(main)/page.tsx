@@ -106,7 +106,7 @@ export default function HomePage() {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-500"></span>
             </span>
-            <span>Sistem Terhubung. Siap Menerima Perintah.</span>
+            <span>Sistem Terhubung! Siap digunakan.</span>
           </motion.div>
           
           <motion.h1 

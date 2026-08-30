@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
 import prisma from "@/lib/prisma";
 import { verifyAdminPassword } from "@/lib/auth";
 
@@ -38,6 +39,8 @@ export async function POST(req: Request) {
         featured: featured || false 
       },
     });
+
+    revalidatePath("/", "layout");
 
     return NextResponse.json(blog, { status: 201 });
   } catch (error) {

@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
 import prisma from "@/lib/prisma";
 import { verifyAdminPassword } from "@/lib/auth";
 
@@ -28,6 +29,8 @@ export async function POST(req: Request) {
     const project = await prisma.project.create({
       data: { title, description, image, link },
     });
+
+    revalidatePath("/", "layout");
 
     return NextResponse.json(project, { status: 201 });
   } catch (error) {
