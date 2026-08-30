@@ -66,7 +66,7 @@ export default async function EventDetailPage({ params }: EventDetailProps) {
 
             <div>
               <h2 className="text-2xl font-bold text-white mb-6 border-b border-white/10 pb-4">Tentang Acara</h2>
-              <div className="prose prose-invert prose-lg max-w-none text-slate-300 leading-relaxed whitespace-pre-wrap">
+              <div className="prose prose-invert prose-lg max-w-none text-slate-300 leading-relaxed whitespace-pre-wrap break-words">
                 {event.description}
               </div>
             </div>

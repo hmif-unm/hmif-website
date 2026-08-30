@@ -63,7 +63,7 @@ export default async function ProjectDetailPage({ params }: ProjectDetailProps) 
         </div>
 
         {/* Content Section */}
-        <div className="prose prose-invert prose-lg max-w-none text-slate-300 font-serif leading-relaxed mb-16 whitespace-pre-wrap">
+        <div className="prose prose-invert prose-lg max-w-none text-slate-300 font-serif leading-relaxed mb-16 whitespace-pre-wrap break-words">
           {project.description}
         </div>
 

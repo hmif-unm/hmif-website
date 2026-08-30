@@ -53,7 +53,7 @@ export function AdminActions({ id, type, redirectUrl }: AdminActionsProps) {
 
   return (
     <>
-      <div className="flex items-center gap-3">
+      <div className="flex flex-wrap items-center gap-3">
         <Link 
           href={`/upload?type=${type}&editId=${id}`}
           className="flex items-center gap-2 px-4 py-2.5 bg-brand-500/10 hover:bg-brand-500/20 text-brand-400 rounded-xl text-sm font-bold transition-all hover:scale-105 border border-brand-500/20"

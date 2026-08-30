@@ -33,7 +33,7 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
           {blog.excerpt}
         </p>
 
-        <div className="flex items-center justify-between mb-8">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8">
           <div className="flex items-center gap-4">
             <div className="w-12 h-12 rounded-full bg-brand-500/20 flex items-center justify-center text-brand-400 text-lg font-bold flex-shrink-0">
               {blog.author.charAt(0).toUpperCase()}
@@ -71,7 +71,7 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
         <div className="prose prose-invert prose-lg max-w-none">
           {/* We use whitespace-pre-wrap to respect newlines entered in the textarea */}
           {blog.content ? (
-            <div className="whitespace-pre-wrap font-serif text-[1.25rem] leading-[2] text-[#d1d5db]">
+            <div className="whitespace-pre-wrap break-words font-serif text-[1.25rem] leading-[2] text-[#d1d5db]">
               {blog.content}
             </div>
           ) : (
