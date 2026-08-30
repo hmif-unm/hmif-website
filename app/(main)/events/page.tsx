@@ -4,6 +4,8 @@ import Link from "next/link";
 import { Calendar, Clock, MapPin, Plus } from "lucide-react";
 import { StaggerContainer, StaggerItem } from "@/components/ui/StaggerContainer";
 
+export const dynamic = "force-dynamic";
+
 export default async function EventsPage() {
   const events = await prisma.event.findMany({
     orderBy: { createdAt: "desc" }

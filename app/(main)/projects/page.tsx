@@ -5,6 +5,8 @@ import { Plus } from "lucide-react";
 import { ExternalLink } from "lucide-react";
 import { StaggerContainer, StaggerItem } from "@/components/ui/StaggerContainer";
 
+export const dynamic = "force-dynamic";
+
 export default async function ProjectsPage() {
   const projects = await prisma.project.findMany({
     orderBy: { createdAt: "desc" }

@@ -4,6 +4,8 @@ import Link from "next/link";
 import { Plus } from "lucide-react";
 import { StaggerContainer, StaggerItem } from "@/components/ui/StaggerContainer";
 
+export const dynamic = "force-dynamic";
+
 export default async function BlogPage() {
   const blogs = await prisma.blog.findMany({
     orderBy: { createdAt: "desc" }
