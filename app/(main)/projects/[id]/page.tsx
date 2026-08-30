@@ -3,7 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ExternalLink, Calendar } from "lucide-react";
-import { AdminActions } from "@/components/ui/AdminActions";
 
 interface ProjectDetailProps {
   params: Promise<{ id: string }>;
@@ -32,13 +31,10 @@ export default async function ProjectDetailPage({ params }: ProjectDetailProps) 
 
         {/* Hero Header */}
         <header className="mb-12">
-          <div className="flex flex-col md:flex-row md:items-start justify-between gap-6 mb-6">
-            <h1 className="text-4xl md:text-5xl font-bold text-white leading-tight flex-1 break-words">
+          <div className="mb-6">
+            <h1 className="text-4xl md:text-5xl font-bold text-white leading-tight break-words">
               {project.title}
             </h1>
-            <div className="shrink-0 flex items-center">
-              <AdminActions id={project.id} type="karya" redirectUrl="/projects" />
-            </div>
           </div>
           
           <div className="flex flex-wrap items-center gap-4 text-sm text-slate-300">

@@ -1,7 +1,6 @@
 import prisma from "@/lib/prisma";
 import Image from "next/image";
 import Link from "next/link";
-import { Plus } from "lucide-react";
 import { ExternalLink } from "lucide-react";
 import { StaggerContainer, StaggerItem } from "@/components/ui/StaggerContainer";
 
@@ -25,7 +24,7 @@ export default async function ProjectsPage() {
         {projects.length === 0 ? (
           <div className="text-center py-20 border border-white/10 rounded-2xl bg-white/5">
             <h2 className="text-2xl text-slate-300 font-bold mb-2">Belum ada karya</h2>
-            <p className="text-slate-300">Klik ikon + di pojok kanan bawah untuk menambahkan karya pertama.</p>
+            <p className="text-slate-300">Tambahkan karya melalui halaman Admin.</p>
           </div>
         ) : (
           <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -40,9 +39,9 @@ export default async function ProjectsPage() {
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                   </div>
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold text-white mb-2">{project.title}</h3>
-                    <p className="text-slate-300 text-sm line-clamp-3">{project.description}</p>
+                  <div className="p-6 min-w-0">
+                    <h3 className="text-xl font-bold text-white mb-2 break-words line-clamp-2">{project.title}</h3>
+                    <p className="text-slate-300 text-sm line-clamp-3 break-words">{project.description}</p>
                   </div>
                 </Link>
               </StaggerItem>
@@ -50,13 +49,6 @@ export default async function ProjectsPage() {
           </StaggerContainer>
         )}
       </div>
-
-      <Link 
-        href="/upload?type=karya"
-        className="fixed bottom-8 right-8 z-40 w-14 h-14 bg-brand-500 rounded-full flex items-center justify-center text-white shadow-[0_0_20px_rgba(99,102,241,0.5)] hover:scale-110 transition-transform"
-      >
-        <Plus className="w-6 h-6" />
-      </Link>
     </main>
   );
 }

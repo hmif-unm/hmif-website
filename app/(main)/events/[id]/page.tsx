@@ -3,7 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, Calendar, Clock, MapPin, Tag } from "lucide-react";
-import { AdminActions } from "@/components/ui/AdminActions";
 
 interface EventDetailProps {
   params: Promise<{ id: string }>;
@@ -33,16 +32,13 @@ export default async function EventDetailPage({ params }: EventDetailProps) {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
           {/* Main Content: Title, Image, Description */}
           <div className="lg:col-span-2 space-y-10">
-            <div className="flex flex-col md:flex-row md:items-start justify-between gap-6">
-              <div>
-                <div className="inline-block bg-brand-500/10 border border-brand-500/20 text-brand-400 font-bold px-3 py-1 rounded-full text-xs uppercase tracking-wider mb-4">
-                  {event.category}
-                </div>
-                <h1 className="text-4xl md:text-5xl font-bold text-white leading-tight">
-                  {event.title}
-                </h1>
+            <div>
+              <div className="inline-block bg-brand-500/10 border border-brand-500/20 text-brand-400 font-bold px-3 py-1 rounded-full text-xs uppercase tracking-wider mb-4">
+                {event.category}
               </div>
-              <AdminActions id={event.id} type="acara" redirectUrl="/events" />
+              <h1 className="text-4xl md:text-5xl font-bold text-white leading-tight break-words">
+                {event.title}
+              </h1>
             </div>
 
             <div className="relative aspect-[4/3] w-full rounded-2xl overflow-hidden border border-white/10 shadow-[0_0_40px_rgba(0,0,0,0.5)]">

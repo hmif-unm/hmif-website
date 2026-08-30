@@ -42,9 +42,9 @@ export default async function EventsPage() {
                       {event.status === "upcoming" ? "Akan Datang" : "Selesai"}
                     </div>
                   </div>
-                  <div className="p-6 flex-1 flex flex-col">
-                    <div className="text-brand-400 text-xs font-bold mb-2 uppercase tracking-wide">{event.category}</div>
-                    <h3 className="text-xl font-bold text-white mb-4 line-clamp-2 group-hover:text-brand-300 transition-colors">{event.title}</h3>
+                  <div className="p-6 flex-1 flex flex-col min-w-0">
+                    <div className="text-brand-400 text-xs font-bold mb-2 uppercase tracking-wide truncate">{event.category}</div>
+                    <h3 className="text-xl font-bold text-white mb-4 line-clamp-2 group-hover:text-brand-300 transition-colors break-words">{event.title}</h3>
                     
                     <div className="space-y-3 mb-6">
                       <div className="flex items-center gap-3 text-sm text-slate-300">
@@ -61,7 +61,7 @@ export default async function EventsPage() {
                       </div>
                     </div>
                     
-                    <p className="text-slate-300 text-sm line-clamp-3 mt-auto border-t border-white/10 pt-4">
+                    <p className="text-slate-300 text-sm line-clamp-3 mt-auto border-t border-white/10 pt-4 break-words">
                       {event.description}
                     </p>
                   </div>
@@ -71,13 +71,6 @@ export default async function EventsPage() {
           </StaggerContainer>
         )}
       </div>
-
-      <Link 
-        href="/upload?type=acara"
-        className="fixed bottom-8 right-8 z-40 w-14 h-14 bg-brand-500 rounded-full flex items-center justify-center text-white shadow-[0_0_20px_rgba(99,102,241,0.5)] hover:scale-110 transition-transform"
-      >
-        <Plus className="w-6 h-6" />
-      </Link>
     </main>
   );
 }

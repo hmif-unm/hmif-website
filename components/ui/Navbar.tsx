@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Terminal, Menu, Lock, X } from "lucide-react";
+import { Terminal, Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
@@ -12,7 +12,6 @@ const navLinks = [
   { name: "Karya", href: "/projects" },
   { name: "Acara", href: "/events" },
   { name: "Blog", href: "/blog" },
-  { name: "Pendaftar", href: "/pendaftar", icon: <Lock className="w-3 h-3 inline-block mr-1 mb-0.5" /> },
 ];
 
 export function Navbar() {
@@ -41,7 +40,6 @@ export function Navbar() {
                     isActive ? "text-brand-400" : "text-slate-300 hover:text-white"
                   }`}
                 >
-                  {link.icon && link.icon}
                   {link.name}
                 </motion.span>
                 
@@ -87,7 +85,6 @@ export function Navbar() {
                       isActive ? "bg-brand-500/10 text-brand-400" : "text-slate-300 hover:bg-white/5 hover:text-white"
                     }`}
                   >
-                    {link.icon && link.icon}
                     {link.name}
                   </Link>
                 );

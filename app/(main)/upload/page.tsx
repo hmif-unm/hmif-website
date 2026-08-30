@@ -27,6 +27,17 @@ function UploadFormContent() {
   const [password, setPassword] = useState("");
   const [authError, setAuthError] = useState("");
 
+  // Auto-login from admin session
+  useEffect(() => {
+    try {
+      const saved = sessionStorage.getItem("hmif_admin_session");
+      if (saved === "PASSWORDUPLOADHMIFWEB2026CIHUYHMIFUNM") {
+        setPassword(saved);
+        setIsAuthorized(true);
+      }
+    } catch {}
+  }, []);
+
   useEffect(() => {
     if (editId && type) {
       let endpoint = "";

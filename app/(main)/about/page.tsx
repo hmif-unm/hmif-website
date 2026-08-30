@@ -27,37 +27,35 @@ const pengurus = [
 export default function AboutPage() {
   return (
     <div className="min-h-screen pb-24">
-      {/* Hero Header dengan Background Blur */}
-      <section className="relative h-[60vh] min-h-[400px] flex items-center justify-center overflow-hidden">
-        {/* Background Image - Group Photo */}
-        <div 
-          className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
+      {/* Hero Photo — full bleed, tall */}
+      <section className="relative w-full h-[60vh] min-h-[400px] overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: "url('/assets/DSCF0895.JPG')" }}
-        >
-          {/* Blur & Gradient Overlay (Reduced to 5%) */}
-          <div className="absolute inset-0 bg-black/5" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#050a14] via-[#050a14]/10 to-transparent" />
-        </div>
+        />
+        {/* only a very subtle bottom fade so the section below reads cleanly */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#060a14]/80 via-transparent to-transparent" />
+      </section>
 
-        <div className="relative z-10 text-center px-6 max-w-3xl mx-auto mt-16">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 drop-shadow-lg">
-              Tentang <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-indigo-500 drop-shadow-[0_0_15px_rgba(99,102,241,0.8)]">HMIF</span>
-            </h1>
-            <p className="text-lg md:text-xl text-slate-300 leading-relaxed drop-shadow-md font-medium">
-              Kami adalah komunitas mahasiswa pembelajar, pembangun, dan inovator.
-              Membentuk masa depan teknologi melalui kolaborasi dan kode.
-            </p>
-          </motion.div>
-        </div>
+      {/* Tentang HMIF — sits below the photo */}
+      <section className="container mx-auto px-6 max-w-3xl text-center pt-16 pb-10">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            Tentang <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-indigo-500">HMIF</span>
+          </h1>
+          <p className="text-lg md:text-xl text-slate-300 leading-relaxed font-medium">
+            Kami adalah komunitas mahasiswa pembelajar, pembangun, dan inovator.
+            Membentuk masa depan teknologi melalui kolaborasi dan kode.
+          </p>
+        </motion.div>
       </section>
 
       {/* Visi Misi Section */}
-      <section className="container mx-auto px-6 -mt-20 relative z-20 max-w-5xl">
+      <section className="container mx-auto px-6 mb-24 relative z-20 max-w-5xl">
         <div className="grid md:grid-cols-2 gap-6">
           <motion.div 
             initial={{ opacity: 0, y: 30 }}

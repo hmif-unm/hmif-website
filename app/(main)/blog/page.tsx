@@ -33,7 +33,7 @@ export default async function BlogPage() {
                 <article className="group flex flex-col md:flex-row justify-between gap-8 py-10 border-b border-white/10 last:border-0">
                   
                   {/* Left Side: Content */}
-                  <div className="flex flex-col flex-1">
+                  <div className="flex flex-col flex-1 min-w-0">
                     {/* Meta Top */}
                     <div className="flex items-center gap-2 text-sm text-slate-300 mb-3">
                       <div className="w-6 h-6 rounded-full bg-brand-500/20 flex items-center justify-center text-brand-400 text-xs font-bold">
@@ -51,12 +51,12 @@ export default async function BlogPage() {
                     </div>
                     
                     {/* Title */}
-                    <h2 className="text-2xl md:text-3xl font-bold text-white mb-2 leading-snug group-hover:text-brand-400 transition-colors">
+                    <h2 className="text-2xl md:text-3xl font-bold text-white mb-2 leading-snug group-hover:text-brand-400 transition-colors break-all line-clamp-2">
                       <Link href={`/blog/${blog.slug}`}>{blog.title}</Link>
                     </h2>
                     
                     {/* Excerpt */}
-                    <p className="text-slate-300 text-base md:text-lg mb-4 line-clamp-2 leading-relaxed">
+                    <p className="text-slate-300 text-base md:text-lg mb-4 line-clamp-2 leading-relaxed break-words">
                       {blog.excerpt}
                     </p>
                     
@@ -104,12 +104,6 @@ export default async function BlogPage() {
         )}
       </div>
 
-      <Link 
-        href="/upload?type=blog"
-        className="fixed bottom-8 right-8 z-40 w-14 h-14 bg-brand-500 rounded-full flex items-center justify-center text-white shadow-[0_0_20px_rgba(99,102,241,0.5)] hover:scale-110 transition-transform"
-      >
-        <Plus className="w-6 h-6" />
-      </Link>
     </main>
   );
 }
