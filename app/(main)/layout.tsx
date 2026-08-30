@@ -25,9 +25,9 @@ export const metadata: Metadata = {
       "Himpunan Mahasiswa Informatika Universitas Nusa Mandiri.",
     images: [
       {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
+        url: "/logo.jpg",
+        width: 409,
+        height: 409,
         alt: "HMIF Universitas Nusa Mandiri",
       },
     ],
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     title: "HMIF Universitas Nusa Mandiri",
     description:
       "Himpunan Mahasiswa Informatika Universitas Nusa Mandiri.",
-    images: ["/og-image.png"],
+    images: ["/logo.jpg"],
   },
 
   robots: {
