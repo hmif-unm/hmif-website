@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, monospace;
+  
+  --color-brand-50: #eef2ff;
+  --color-brand-100: #e0e7ff;
+  --color-brand-400: #818cf8;
+  --color-brand-500: #6366f1;
+  --color-brand-600: #4f46e5;
+  --color-brand-900: #312e81;
+  
+  --color-dark-bg: #050a14;
+  --color-dark-card: #0c1322;
+  --color-dark-border: #1e293b;
+}
+
+:root {
+  --background: var(--color-dark-bg);
+  --foreground: #f8fafc;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Prevent overscroll bounce on Mac/iOS to make it feel more solid */
+  overscroll-behavior-y: none; 
+}
+
+@layer base {
+  body {
+    background-color: var(--color-dark-bg);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    /* Enable GPU rendering for scrolling where supported */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Hide default cursor on devices that support hover/fine pointer */
+@media (pointer: fine) {
+  body, a, button, input, select, textarea {
+    cursor: none;
+  }
+}
+
+/* Glassmorphism utilities */
+.glass {
+  background: rgba(12, 19, 34, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Removed heavy hardware acceleration class to save VRAM on mobile devices */

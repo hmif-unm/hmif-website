@@ -1,0 +1,58 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model Registration {
+  id             String   @id @default(cuid())
+  nama           String
+  umur           Int
+  asalSekolah    String
+  nim            String   @unique
+  alasanMasuk    String   @db.Text
+  harapan        String   @db.Text
+  nomorTelepon   String   @default("-")
+  cabangKampus   String   @default("-")
+  createdAt      DateTime @default(now())
+}
+
+model Project {
+  id          String   @id @default(cuid())
+  title       String
+  description String   @db.Text
+  image       String
+  link        String?
+  createdAt   DateTime @default(now())
+}
+
+model Event {
+  id          String   @id @default(cuid())
+  title       String
+  date        String
+  time        String
+  location    String
+  category    String
+  status      String   // "upcoming" | "past"
+  image       String
+  description String   @db.Text
+  createdAt   DateTime @default(now())
+}
+
+model Blog {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  title       String
+  excerpt     String   @db.Text
+  category    String
+  author      String
+  readTime    String
+  image       String
+  content     String?  @db.Text
+  featured    Boolean  @default(false)
+  createdAt   DateTime @default(now())
+}
