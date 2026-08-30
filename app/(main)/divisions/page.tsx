@@ -139,7 +139,7 @@ export default function DivisionsPage() {
         <div className="grid lg:grid-cols-12 gap-8 lg:gap-16 relative">
           
           {/* Left Sidebar Menu */}
-          <div className="lg:col-span-4 flex flex-col gap-3 relative z-10">
+          <div className="lg:col-span-4 flex lg:flex-col flex-row gap-3 overflow-x-auto pb-4 lg:pb-0 relative z-10 snap-x hide-scrollbar">
             {divisions.map((div, idx) => {
               const isActive = activeTab === div.id;
               const Icon = div.icon;
@@ -151,7 +151,7 @@ export default function DivisionsPage() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: idx * 0.1 }}
                   onClick={() => setActiveTab(div.id)}
-                  className={`group relative flex items-center gap-4 p-4 rounded-2xl transition-all duration-300 text-left overflow-hidden ${
+                  className={`group relative flex items-center gap-4 p-4 rounded-2xl transition-all duration-300 text-left overflow-hidden shrink-0 w-[240px] lg:w-auto snap-center ${
                     isActive 
                       ? `bg-white/10 border-white/20 shadow-lg` 
                       : `hover:bg-white/5 border border-transparent`

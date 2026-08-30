@@ -212,8 +212,8 @@ export function TerminalModal({ isOpen, onClose }: TerminalModalProps) {
                 ].map((q, idx) => (
                   step >= idx && (
                     <motion.div key={idx} initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-                      <div>
-                        <span className="text-purple-400">hmif</span> <span className="text-slate-300">{q.label}</span> 
+                      <div className="flex flex-wrap items-center">
+                        <span className="text-purple-400">hmif</span> <span className="text-slate-300 ml-1">{q.label}</span> 
                         {step > idx && <span className="text-white ml-2">{(formData as any)[q.field]}</span>}
                         {step === idx && (
                           <input
@@ -222,7 +222,7 @@ export function TerminalModal({ isOpen, onClose }: TerminalModalProps) {
                             value={inputVal}
                             onChange={(e) => setInputVal(e.target.value)}
                             onKeyDown={handleKeyDown}
-                            className="bg-transparent border-none outline-none text-white ml-2 w-1/2 focus:ring-0 p-0"
+                            className="bg-transparent border-none outline-none text-white ml-2 flex-1 min-w-[150px] focus:ring-0 p-0"
                             autoComplete="off"
                             spellCheck="false"
                           />
