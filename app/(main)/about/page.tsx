@@ -31,7 +31,7 @@ export default function AboutPage() {
       <section className="relative w-full h-[60vh] min-h-[400px] overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: "url('/assets/DSCF0895.JPG')" }}
+          style={{ backgroundImage: "url('https://raw.githubusercontent.com/hmif-unm/hmif-assets/refs/heads/main/about_us/DSCF0895.JPG')" }}
         />
         {/* only a very subtle bottom fade so the section below reads cleanly */}
         <div className="absolute inset-0 bg-gradient-to-t from-[#060a14]/80 via-transparent to-transparent" />
