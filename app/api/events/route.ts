@@ -20,14 +20,14 @@ export async function POST(req: Request) {
   }
   try {
     const body = await req.json();
-    const { title, date, time, location, category, status, image, description } = body;
+    const { title, date, time, location, category, status, image_url, description } = body;
     
-    if (!title || !date || !time || !location || !category || !status || !image || !description) {
+    if (!title || !date || !time || !location || !category || !status || !image_url || !description) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     }
 
     const event = await prisma.event.create({
-      data: { title, date, time, location, category, status, image, description },
+      data: { title, date, time, location, category, status, image_url, description },
     });
 
     revalidatePath("/", "layout");
