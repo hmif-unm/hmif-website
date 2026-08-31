@@ -18,7 +18,7 @@ export default async function EventsPage() {
           Acara & <span className="text-brand-500">Kegiatan</span>
         </h1>
         <p className="text-slate-300 mb-12 max-w-2xl text-lg">
-          Jangan lewatkan berbagai seminar, *workshop*, dan kegiatan seru dari himpunan.
+          Jangan lewatkan berbagai seminar, workshop, dan kegiatan seru dari himpunan.
         </p>
 
         {events.length === 0 ? (
@@ -32,7 +32,7 @@ export default async function EventsPage() {
                 <Link href={`/events/${event.id}`} className="h-full block bg-[#0c1322] border border-white/10 rounded-2xl overflow-hidden flex flex-col hover:border-brand-500/50 transition-colors hover:-translate-y-1 hover:shadow-[0_10px_40px_rgba(99,102,241,0.15)] group">
                   <div className="relative h-48 overflow-hidden">
                     <Image 
-                      src={event.image} 
+                      src={event.image_url} 
                       alt={event.title}
                       fill
                       className="object-cover group-hover:scale-105 transition-transform duration-500"

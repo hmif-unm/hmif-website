@@ -43,7 +43,7 @@ export default async function EventDetailPage({ params }: EventDetailProps) {
 
             <div className="relative aspect-[4/3] w-full rounded-2xl overflow-hidden border border-white/10 shadow-[0_0_40px_rgba(0,0,0,0.5)]">
               <Image 
-                src={event.image} 
+                src={event.image_url} 
                 alt={event.title}
                 fill
                 className="object-cover"

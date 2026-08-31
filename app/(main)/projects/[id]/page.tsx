@@ -52,7 +52,7 @@ export default async function ProjectDetailPage({ params }: ProjectDetailProps) 
         {/* Massive Hero Image */}
         <div className="relative aspect-video w-full rounded-2xl overflow-hidden mb-12 border border-white/10 shadow-[0_0_40px_rgba(0,0,0,0.5)]">
           <Image 
-            src={project.image} 
+            src={project.image_url} 
             alt={project.title}
             fill
             className="object-cover"

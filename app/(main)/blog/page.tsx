@@ -71,7 +71,7 @@ export default async function BlogPage() {
                   <div className="w-full md:w-56 h-40 relative overflow-hidden rounded-xl flex-shrink-0 bg-[#0c1322] hidden md:block hw-accel">
                     <Link href={`/blog/${blog.slug}`}>
                       <Image 
-                        src={blog.image} 
+                        src={blog.image_url} 
                         alt={blog.title}
                         fill
                         className="object-cover group-hover:scale-105 transition-transform duration-500"
@@ -88,7 +88,7 @@ export default async function BlogPage() {
                   <div className="w-full h-48 relative overflow-hidden rounded-xl flex-shrink-0 bg-[#0c1322] md:hidden mt-4 hw-accel">
                     <Link href={`/blog/${blog.slug}`}>
                       <Image 
-                        src={blog.image} 
+                        src={blog.image_url} 
                         alt={blog.title}
                         fill
                         className="object-cover"

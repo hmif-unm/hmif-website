@@ -25,7 +25,7 @@ model Project {
   id          String   @id @default(cuid())
   title       String
   description String   @db.Text
-  image       String
+  image_url   String
   link        String?
   createdAt   DateTime @default(now())
 }
@@ -38,7 +38,7 @@ model Event {
   location    String
   category    String
   status      String   // "upcoming" | "past"
-  image       String
+  image_url   String
   description String   @db.Text
   createdAt   DateTime @default(now())
 }
@@ -51,7 +51,7 @@ model Blog {
   category    String
   author      String
   readTime    String
-  image       String
+  image_url   String
   content     String?  @db.Text
   featured    Boolean  @default(false)
   createdAt   DateTime @default(now())

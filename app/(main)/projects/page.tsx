@@ -32,7 +32,7 @@ export default async function ProjectsPage() {
                 <Link href={`/projects/${project.id}`} className="group relative h-full block bg-[#0c1322] border border-white/10 rounded-2xl overflow-hidden hover:border-brand-500/50 transition-colors hover:-translate-y-1 hover:shadow-[0_10px_40px_rgba(99,102,241,0.15)]">
                   <div className="aspect-video relative overflow-hidden bg-[#0c1322]">
                     <Image 
-                      src={project.image} 
+                      src={project.image_url} 
                       alt={project.title}
                       fill
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
