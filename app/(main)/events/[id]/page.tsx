@@ -4,6 +4,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, Calendar, Clock, MapPin, Tag } from "lucide-react";
 
+export const revalidate = 300;
+
 interface EventDetailProps {
   params: Promise<{ id: string }>;
 }

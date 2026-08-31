@@ -4,6 +4,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ExternalLink, Calendar } from "lucide-react";
 
+export const revalidate = 300;
+
 interface ProjectDetailProps {
   params: Promise<{ id: string }>;
 }

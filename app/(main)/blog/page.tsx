@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Plus } from "lucide-react";
 import { StaggerContainer, StaggerItem } from "@/components/ui/StaggerContainer";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 300;
 
 export default async function BlogPage() {
   const blogs = await prisma.blog.findMany({
