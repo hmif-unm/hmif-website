@@ -53,7 +53,7 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
         {/* Hero Image */}
         <div className="relative aspect-video w-full rounded-xl overflow-hidden mb-12 bg-white/5">
           <Image 
-            src={blog.image} 
+            src={blog.image_url} 
             alt={blog.title}
             fill
             className="object-cover"
