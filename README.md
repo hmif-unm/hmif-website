@@ -1,36 +1,75 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# HMIF Website
 
-## Getting Started
+Official website of **Himpunan Mahasiswa Informatika (HMIF) Universitas Nusa Mandiri**.
 
-First, run the development server:
+Website ini dikembangkan sebagai platform digital resmi HMIF Universitas Nusa Mandiri untuk menyediakan informasi mengenai organisasi, kegiatan, program kerja, publikasi, serta berbagai informasi lainnya yang berkaitan dengan HMIF.
+
+Project ini dirancang dengan arsitektur modern menggunakan Next.js dan TypeScript, dengan PostgreSQL sebagai database serta Prisma sebagai ORM. Website di-deploy menggunakan Vercel untuk menyediakan akses yang cepat dan reliable.
+
+## Tech Stack
+
+* **Next.js** — React framework untuk membangun aplikasi web
+* **TypeScript** — Type-safe development
+* **Tailwind CSS** — Utility-first CSS framework
+* **Prisma ORM** — Database toolkit dan ORM
+* **PostgreSQL** — Relational database
+* **Vercel** — Deployment dan hosting
+
+## Development
+
+Clone repository:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/hmif-unm/hmif-website.git
+cd hmif-website
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Install dependencies:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+bun install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Buat file `.env` dan konfigurasi database:
 
-## Learn More
+```env
+DATABASE_URL="postgresql://USER:PASSWORD@HOST:PORT/DATABASE"
+```
 
-To learn more about Next.js, take a look at the following resources:
+Generate Prisma Client:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+bunx prisma generate
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Jalankan development server:
 
-## Deploy on Vercel
+```bash
+bun run dev
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Website dapat diakses melalui:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```text
+http://localhost:3000
+```
+
+## Production
+
+Build project:
+
+```bash
+bun run build
+```
+
+Jalankan production server:
+
+```bash
+bun run start
+```
+
+Untuk deployment menggunakan Vercel, pastikan `DATABASE_URL` telah dikonfigurasi pada environment variables dan Prisma Client di-generate pada proses build.
+
+## License
+
+Copyright © 2026 **Himpunan Mahasiswa Informatika Universitas Nusa Mandiri**.
