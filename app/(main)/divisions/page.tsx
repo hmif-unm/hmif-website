@@ -49,7 +49,7 @@ const divisions = [
     programs: [
       { title: "Study Group", desc: "Kelompok belajar rutin untuk mata kuliah inti seperti Struktur Data." },
       { title: "Pelatihan Sertifikasi", desc: "Workshop persiapan sertifikasi internasional." },
-      { title: "Bank Soal", desc: "Pengumpulan dan pembahasan soal-soal ujian tahun sebelumnya." }
+      { title: "Informatika Berkarya", desc: "Ruang untuk mengenal berbagai kegiatan, karya, dan kontribusi mahasiswa Informatika." }
     ],
     achievements: ["95% Lulus Sertifikasi", "50+ Modul Belajar"]
   },
