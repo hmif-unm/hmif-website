@@ -24,7 +24,6 @@ export default async function EventsPage() {
         {events.length === 0 ? (
           <div className="text-center py-20 border border-white/10 rounded-2xl bg-white/5">
             <h2 className="text-2xl text-slate-300 font-bold mb-2">Belum ada acara</h2>
-            <p className="text-slate-300">Klik ikon + di pojok kanan bawah untuk membuat acara pertama.</p>
           </div>
         ) : (
           <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

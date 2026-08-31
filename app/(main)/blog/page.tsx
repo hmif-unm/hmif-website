@@ -24,7 +24,6 @@ export default async function BlogPage() {
         {blogs.length === 0 ? (
           <div className="text-center py-20 border border-white/10 rounded-2xl bg-white/5">
             <h2 className="text-2xl text-slate-300 font-bold mb-2">Belum ada artikel</h2>
-            <p className="text-slate-300">Klik ikon + di pojok kanan bawah untuk menulis artikel pertama.</p>
           </div>
         ) : (
           <StaggerContainer className="flex flex-col">

@@ -18,13 +18,12 @@ export default async function ProjectsPage() {
           Karya <span className="text-brand-500">Mahasiswa</span>
         </h1>
         <p className="text-slate-300 mb-12 max-w-2xl text-lg">
-          Kumpulan portofolio, aplikasi, dan karya inovatif yang diciptakan oleh mahasiswa Teknik Informatika.
+          Kumpulan portofolio, aplikasi, dan karya inovatif yang diciptakan oleh mahasiswa Informatika.
         </p>
 
         {projects.length === 0 ? (
           <div className="text-center py-20 border border-white/10 rounded-2xl bg-white/5">
             <h2 className="text-2xl text-slate-300 font-bold mb-2">Belum ada karya</h2>
-            <p className="text-slate-300">Tambahkan karya melalui halaman Admin.</p>
           </div>
         ) : (
           <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
