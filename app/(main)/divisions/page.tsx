@@ -118,14 +118,14 @@ export default function DivisionsPage() {
               <span className="text-sm font-medium text-slate-300">Struktur Organisasi</span>
             </motion.div>
             <motion.h1 
-              initial={{ opacity: 0, y: 20 }}
+              initial={false}
               animate={{ opacity: 1, y: 0 }}
               className="text-4xl md:text-6xl font-bold text-white mb-4 tracking-tight"
             >
               Divisi <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-indigo-500">& Departemen</span>
             </motion.h1>
             <motion.p 
-              initial={{ opacity: 0, y: 20 }}
+              initial={false}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
               className="text-lg text-slate-300 leading-relaxed"

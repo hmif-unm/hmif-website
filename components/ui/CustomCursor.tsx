@@ -1,92 +1,92 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { motion, useMotionValue, useSpring } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 
 export function CustomCursor() {
-  const [isVisible, setIsVisible] = useState(false);
+  const [isFinePointer, setIsFinePointer] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
-  
-  const cursorX = useMotionValue(-100);
-  const cursorY = useMotionValue(-100);
-  
-  // Spring config for the trailing ring
-  const springConfig = { damping: 25, stiffness: 300, mass: 0.5 };
-  const cursorXSpring = useSpring(cursorX, springConfig);
-  const cursorYSpring = useSpring(cursorY, springConfig);
+  const dotRef = useRef<HTMLDivElement>(null);
+  const ringRef = useRef<HTMLDivElement>(null);
+  const isHoveringRef = useRef(false);
 
   useEffect(() => {
-    const moveCursor = (e: MouseEvent) => {
-      if (!isVisible) setIsVisible(true);
-      cursorX.set(e.clientX);
-      cursorY.set(e.clientY);
+    const mediaQuery = window.matchMedia("(pointer: fine)");
+    const updatePointerType = () => setIsFinePointer(mediaQuery.matches);
 
-      // Detect if hovering over clickable elements
-      const target = e.target as HTMLElement;
-      const isClickable = 
-        target.tagName.toLowerCase() === 'a' ||
-        target.tagName.toLowerCase() === 'button' ||
-        target.closest('a') !== null ||
-        target.closest('button') !== null;
-        
-      setIsHovering(isClickable);
+    updatePointerType();
+    mediaQuery.addEventListener("change", updatePointerType);
+
+    return () => mediaQuery.removeEventListener("change", updatePointerType);
+  }, []);
+
+  useEffect(() => {
+    if (!isFinePointer) return;
+
+    const moveCursor = (event: PointerEvent) => {
+      const transform = `translate3d(${event.clientX}px, ${event.clientY}px, 0) translate(-50%, -50%)`;
+
+      if (dotRef.current) {
+        dotRef.current.style.transform = transform;
+        dotRef.current.style.opacity = "1";
+      }
+
+      if (ringRef.current) {
+        ringRef.current.style.transform = transform;
+        ringRef.current.style.opacity = "1";
+      }
+
+      const target = event.target;
+      const nextIsHovering =
+        target instanceof Element && Boolean(target.closest("a, button, input, select, textarea"));
+
+      if (nextIsHovering !== isHoveringRef.current) {
+        isHoveringRef.current = nextIsHovering;
+        setIsHovering(nextIsHovering);
+      }
     };
 
-    const handleMouseLeave = () => setIsVisible(false);
-    const handleMouseEnter = () => setIsVisible(true);
+    const hideCursor = () => {
+      if (dotRef.current) dotRef.current.style.opacity = "0";
+      if (ringRef.current) ringRef.current.style.opacity = "0";
+    };
 
-    window.addEventListener("mousemove", moveCursor);
-    document.addEventListener("mouseleave", handleMouseLeave);
-    document.addEventListener("mouseenter", handleMouseEnter);
+    window.addEventListener("pointermove", moveCursor);
+    document.addEventListener("pointerleave", hideCursor);
 
     return () => {
-      window.removeEventListener("mousemove", moveCursor);
-      document.removeEventListener("mouseleave", handleMouseLeave);
-      document.removeEventListener("mouseenter", handleMouseEnter);
+      window.removeEventListener("pointermove", moveCursor);
+      document.removeEventListener("pointerleave", hideCursor);
     };
-  }, [cursorX, cursorY, isVisible]);
+  }, [isFinePointer]);
 
-  // Don't render cursor on touch devices
-  if (typeof window !== "undefined" && window.matchMedia("(pointer: coarse)").matches) {
-    return null;
-  }
+  if (!isFinePointer) return null;
 
   return (
     <>
-
-      {/* Trailing Ring */}
-      <motion.div
-        className="fixed top-0 left-0 w-8 h-8 border border-brand-500/50 rounded-full pointer-events-none z-[60] mix-blend-screen"
-        style={{
-          x: cursorXSpring,
-          y: cursorYSpring,
-          translateX: "-50%",
-          translateY: "-50%",
-          opacity: isVisible ? 1 : 0,
-        }}
-        animate={{
-          scale: isHovering ? 1.5 : 1,
-          borderColor: isHovering ? "rgba(99, 102, 241, 0.8)" : "rgba(99, 102, 241, 0.4)",
-          backgroundColor: isHovering ? "rgba(99, 102, 241, 0.1)" : "transparent",
-        }}
-        transition={{ duration: 0.2 }}
-      />
-      
-      {/* Main Dot */}
-      <motion.div
-        className="fixed top-0 left-0 w-2 h-2 bg-brand-400 rounded-full pointer-events-none z-[60]"
-        style={{
-          x: cursorX,
-          y: cursorY,
-          translateX: "-50%",
-          translateY: "-50%",
-          opacity: isVisible ? 1 : 0,
-        }}
-        animate={{
-          scale: isHovering ? 0 : 1, // Dot disappears when hovering, replaced by ring
-        }}
-        transition={{ duration: 0.2 }}
-      />
+      <div
+        ref={ringRef}
+        aria-hidden="true"
+        className="fixed left-0 top-0 z-[60] h-8 w-8 pointer-events-none opacity-0 transition-[transform,opacity] duration-150 ease-out will-change-transform"
+      >
+        <div
+          className={`h-full w-full rounded-full border transition-[transform,border-color,background-color] duration-150 ${
+            isHovering
+              ? "scale-150 border-brand-400 bg-brand-500/10"
+              : "scale-100 border-brand-500/50 bg-transparent"
+          }`}
+        />
+      </div>
+      <div
+        ref={dotRef}
+        aria-hidden="true"
+        className="fixed left-0 top-0 z-[60] h-2 w-2 pointer-events-none opacity-0 will-change-transform"
+      >
+        <div
+          className={`h-full w-full rounded-full bg-brand-400 transition-transform duration-75 ${
+            isHovering ? "scale-0" : "scale-100"
+          }`}
+        />
+      </div>
     </>
   );
 }

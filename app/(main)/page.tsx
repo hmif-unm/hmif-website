@@ -97,7 +97,7 @@ export default function HomePage() {
 
         <div className="container mx-auto max-w-5xl text-center relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-500/10 border border-brand-500/20 text-brand-400 text-sm font-medium mb-8"
@@ -106,11 +106,11 @@ export default function HomePage() {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-500"></span>
             </span>
-            <span>Sistem Terhubung! Siap digunakan.</span>
+            <span>Pinging hmif-unm.vercel.app</span>
           </motion.div>
           
           <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-5xl md:text-7xl font-bold tracking-tight text-white mb-6 leading-tight"
@@ -122,7 +122,7 @@ export default function HomePage() {
           </motion.h1>
           
           <motion.p 
-            initial={{ opacity: 0, y: 20 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
             className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto mb-10 leading-relaxed"
@@ -132,7 +132,7 @@ export default function HomePage() {
           </motion.p>
           
           <motion.div 
-            initial={{ opacity: 0, y: 20 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
             className="flex flex-col sm:flex-row items-center justify-center gap-4"
@@ -147,7 +147,7 @@ export default function HomePage() {
               onClick={() => setIsTerminalOpen(true)}
               className="flex items-center justify-center gap-2 w-full sm:w-auto px-8 py-3.5 glass hover:bg-white/5 text-white rounded-xl font-medium transition-colors"
             >
-              <Terminal className="w-4 h-4" /> Masuk Terminal
+              <Terminal className="w-4 h-4" /> Gabung Himpunan
             </button>
           </motion.div>
         </div>
@@ -166,7 +166,7 @@ export default function HomePage() {
               <Code2 className="w-24 h-24" />
             </div>
             <div className="relative z-10">
-              <div className="text-4xl font-bold text-white mb-2">150+</div>
+              <div className="text-4xl font-bold text-white mb-2">3</div>
               <div className="text-brand-400 font-medium mb-2">Proyek Aktif</div>
               <p className="text-sm text-slate-300">Aplikasi web, mobile, hingga riset AI buatan mahasiswa.</p>
             </div>
@@ -183,9 +183,9 @@ export default function HomePage() {
               <Cpu className="w-24 h-24" />
             </div>
             <div className="relative z-10">
-              <div className="text-4xl font-bold text-white mb-2">4</div>
+              <div className="text-4xl font-bold text-white mb-2">5</div>
               <div className="text-indigo-400 font-medium mb-2">Divisi Utama</div>
-              <p className="text-sm text-slate-300">Pendidikan, R&D, Kominfo, dan Hubungan Masyarakat.</p>
+              <p className="text-sm text-slate-300">Hubungan Masyarakat / Humas, Media Kreatif / PDD, Riset & Teknologi, Keilmuan, Acara.</p>
             </div>
           </motion.div>
           
@@ -202,7 +202,7 @@ export default function HomePage() {
             <div className="relative z-10">
               <div className="text-4xl font-bold text-white mb-2">24/7</div>
               <div className="text-blue-400 font-medium mb-2">Sistem Publik</div>
-              <p className="text-sm text-slate-300">API Terbuka untuk digunakan sebagai bahan belajar.</p>
+              <p className="text-sm text-slate-300">Web ini digunakan sebagai sumber segala informasi terkait himpunan.</p>
             </div>
           </motion.div>
         </div>
