@@ -118,6 +118,7 @@ export default function PendaftarPage() {
                   <th scope="col" className="px-6 py-4">NIM</th>
                   <th scope="col" className="px-6 py-4">Umur</th>
                   <th scope="col" className="px-6 py-4">Asal Sekolah</th>
+                  <th scope="col" className="px-6 py-4">Program Studi</th>
                   <th scope="col" className="px-6 py-4">No Telp</th>
                   <th scope="col" className="px-6 py-4">Cabang Kampus</th>
                   <th scope="col" className="px-6 py-4 max-w-[200px]">Alasan Masuk</th>
@@ -133,6 +134,7 @@ export default function PendaftarPage() {
                     <td className="px-6 py-4 font-mono text-brand-400">{reg.nim}</td>
                     <td className="px-6 py-4">{reg.umur}</td>
                     <td className="px-6 py-4">{reg.asalSekolah}</td>
+                    <td className="px-6 py-4">{reg.programStudi || "-"}</td>
                     <td className="px-6 py-4 font-mono text-brand-400">{reg.nomorTelepon}</td>
                     <td className="px-6 py-4">{reg.cabangKampus}</td>
                     <td className="px-6 py-4 text-slate-300 truncate max-w-[200px]" title={reg.alasanMasuk}>

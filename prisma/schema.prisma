@@ -13,6 +13,7 @@ model Registration {
   nama           String
   umur           Int
   asalSekolah    String
+  programStudi   String   @default("-")
   nim            String   @unique
   alasanMasuk    String   @db.Text
   harapan        String   @db.Text

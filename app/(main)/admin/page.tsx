@@ -38,6 +38,7 @@ type Registration = {
   nim: string;
   umur: string;
   asalSekolah: string;
+  programStudi: string;
   nomorTelepon: string;
   cabangKampus: string;
   alasanMasuk: string;
@@ -441,6 +442,7 @@ export default function AdminPage() {
                     <th scope="col" className="px-5 py-4 font-mono">NIM</th>
                     <th scope="col" className="px-5 py-4">Umur</th>
                     <th scope="col" className="px-5 py-4">Asal Sekolah</th>
+                    <th scope="col" className="px-5 py-4">Program Studi</th>
                     <th scope="col" className="px-5 py-4 font-mono">No Telp</th>
                     <th scope="col" className="px-5 py-4">Cabang Kampus</th>
                     <th scope="col" className="px-5 py-4 max-w-[200px]">Alasan Masuk</th>
@@ -456,6 +458,7 @@ export default function AdminPage() {
                       <td className="px-5 py-4 font-mono text-brand-400 whitespace-nowrap">{reg.nim}</td>
                       <td className="px-5 py-4">{reg.umur}</td>
                       <td className="px-5 py-4">{reg.asalSekolah}</td>
+                      <td className="px-5 py-4 whitespace-nowrap">{reg.programStudi || "-"}</td>
                       <td className="px-5 py-4 font-mono text-brand-400 whitespace-nowrap">{reg.nomorTelepon}</td>
                       <td className="px-5 py-4 whitespace-nowrap">{reg.cabangKampus}</td>
                       <td className="px-5 py-4 text-slate-300 truncate max-w-[200px]" title={reg.alasanMasuk}>

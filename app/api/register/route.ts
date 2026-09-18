@@ -11,7 +11,7 @@ export async function GET(req: Request) {
       orderBy: { createdAt: "desc" },
     });
     return NextResponse.json(registrations);
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: "Failed to fetch data" }, { status: 500 });
   }
 }
@@ -19,10 +19,10 @@ export async function GET(req: Request) {
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { nama, umur, asalSekolah, nim, alasanMasuk, harapan, nomorTelepon, cabangKampus } = body;
+    const { nama, umur, asalSekolah, programStudi, nim, alasanMasuk, harapan, nomorTelepon, cabangKampus } = body;
 
     // Validate simple required fields
-    if (!nama || !umur || !asalSekolah || !nim || !alasanMasuk || !harapan || !nomorTelepon || !cabangKampus) {
+    if (!nama || !umur || !asalSekolah || !programStudi || !nim || !alasanMasuk || !harapan || !nomorTelepon || !cabangKampus) {
       return NextResponse.json(
         { error: "Semua data harus diisi!" },
         { status: 400 }
@@ -32,6 +32,13 @@ export async function POST(req: Request) {
     if (isNaN(parseInt(umur)) || parseInt(umur) <= 0) {
       return NextResponse.json(
         { error: "Umur harus berupa angka yang valid!" },
+        { status: 400 }
+      );
+    }
+
+    if (!/^\d+$/.test(String(nim))) {
+      return NextResponse.json(
+        { error: "NIM harus berupa angka yang valid!" },
         { status: 400 }
       );
     }
@@ -54,6 +61,7 @@ export async function POST(req: Request) {
         nama,
         umur: parseInt(umur),
         asalSekolah,
+        programStudi,
         nim,
         alasanMasuk,
         harapan,
