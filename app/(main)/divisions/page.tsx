@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { BookOpen, Rocket, Users, Target, ShieldCheck, Cpu, Camera, Calendar, ArrowRight, Activity, Zap } from "lucide-react";
+import { BookOpen, Rocket, Users, Cpu, Camera, Calendar, ArrowRight, Activity, Zap } from "lucide-react";
 
 const divisions = [
   {
@@ -10,6 +11,11 @@ const divisions = [
     name: "Hubungan Masyarakat",
     shortName: "Humas",
     icon: Users,
+    image: "https://raw.githubusercontent.com/hmif-unm/hmif-assets/refs/heads/main/divisi/Sie%20Humas.JPG",
+    imagePosition: "object-[center_60%]",
+    imageGlow: "bg-emerald-500/30",
+    imageGradient: "from-emerald-600/30 via-emerald-500/10 to-transparent",
+    imageTint: "bg-emerald-500/20",
     color: "from-emerald-400 to-teal-500",
     glowColor: "bg-emerald-500/20",
     textGlow: "text-emerald-400",
@@ -26,6 +32,11 @@ const divisions = [
     name: "Publikasi, Dekorasi & Dokumentasi",
     shortName: "PDD",
     icon: Camera,
+    image: "https://raw.githubusercontent.com/hmif-unm/hmif-assets/refs/heads/main/divisi/Sie%20Mekref.JPG",
+    imagePosition: "object-[center_50%]",
+    imageGlow: "bg-pink-500/30",
+    imageGradient: "from-pink-600/30 via-pink-500/10 to-transparent",
+    imageTint: "bg-pink-500/20",
     color: "from-pink-400 to-rose-500",
     glowColor: "bg-pink-500/20",
     textGlow: "text-pink-400",
@@ -42,6 +53,11 @@ const divisions = [
     name: "Keilmuan",
     shortName: "Keilmuan",
     icon: BookOpen,
+    image: "https://raw.githubusercontent.com/hmif-unm/hmif-assets/refs/heads/main/divisi/Sie%20Keilmuan.JPG",
+    imagePosition: "object-[center_48%]",
+    imageGlow: "bg-blue-500/30",
+    imageGradient: "from-blue-600/30 via-blue-500/10 to-transparent",
+    imageTint: "bg-blue-500/20",
     color: "from-blue-400 to-indigo-500",
     glowColor: "bg-blue-500/20",
     textGlow: "text-blue-400",
@@ -58,6 +74,11 @@ const divisions = [
     name: "Riset & Teknologi",
     shortName: "Riset & Tech",
     icon: Rocket,
+    image: "https://raw.githubusercontent.com/hmif-unm/hmif-assets/refs/heads/main/divisi/Sie%20Ristek.JPG",
+    imagePosition: "object-[center_55%]",
+    imageGlow: "bg-violet-500/30",
+    imageGradient: "from-violet-600/30 via-violet-500/10 to-transparent",
+    imageTint: "bg-violet-500/20",
     color: "from-violet-400 to-purple-500",
     glowColor: "bg-violet-500/20",
     textGlow: "text-violet-400",
@@ -74,6 +95,11 @@ const divisions = [
     name: "Acara",
     shortName: "Acara",
     icon: Calendar,
+    image: "https://raw.githubusercontent.com/hmif-unm/hmif-assets/refs/heads/main/divisi/Sie%20Acara.JPG",
+    imagePosition: "object-[center_65%]",
+    imageGlow: "bg-orange-500/30",
+    imageGradient: "from-orange-600/30 via-orange-500/10 to-transparent",
+    imageTint: "bg-orange-500/20",
     color: "from-orange-400 to-red-500",
     glowColor: "bg-orange-500/20",
     textGlow: "text-orange-400",
@@ -207,15 +233,49 @@ export default function DivisionsPage() {
                 className="grid grid-cols-1 md:grid-cols-2 gap-6 h-full"
               >
                 {/* Huge Title Card */}
-                <div className={`md:col-span-2 rounded-3xl p-8 relative overflow-hidden border border-white/10 ${activeDiv.glowColor}`}>
-                  <div className="absolute top-0 right-0 p-8 opacity-20 transform translate-x-4 -translate-y-4">
-                    <ActiveIcon className="w-48 h-48" />
-                  </div>
-                  <div className="relative z-10">
-                    <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 max-w-lg leading-tight">
+                <div className={`md:col-span-2 rounded-3xl p-8 md:p-10 relative overflow-hidden border border-white/10 ${activeDiv.glowColor} bg-[#0c1322]/80`}>
+                  {"image" in activeDiv && activeDiv.image ? (
+                    <div className="absolute top-0 right-0 bottom-0 w-full sm:w-1/2 md:w-[50%] pointer-events-none overflow-hidden select-none">
+                      {/* Division theme background glow */}
+                      <div className={`absolute top-1/2 right-4 -translate-y-1/2 w-80 h-80 ${activeDiv.imageGlow} rounded-full blur-3xl`} />
+                      <div className={`absolute inset-0 bg-gradient-to-l ${activeDiv.imageGradient}`} />
+
+                      {/* Photo Container with Smooth Fade Out Effect */}
+                      <div 
+                        className="relative w-full h-full"
+                        style={{
+                          maskImage: "linear-gradient(to right, transparent 0%, rgba(0,0,0,0.1) 10%, rgba(0,0,0,0.7) 40%, black 80%)",
+                          WebkitMaskImage: "linear-gradient(to right, transparent 0%, rgba(0,0,0,0.1) 10%, rgba(0,0,0,0.7) 40%, black 80%)"
+                        }}
+                      >
+                        <Image
+                          src={activeDiv.image as string}
+                          alt={`Foto Divisi ${activeDiv.name}`}
+                          fill
+                          className={`object-cover ${activeDiv.imagePosition} opacity-35 sm:opacity-60 hover:opacity-80 transition-opacity duration-700`}
+                          sizes="(max-width: 768px) 100vw, 50vw"
+                          priority
+                        />
+
+                        {/* Theme tint atmosphere over image */}
+                        <div className={`absolute inset-0 ${activeDiv.imageTint} mix-blend-color`} />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#0c1322]/70 via-transparent to-[#0c1322]/40" />
+                        
+                        {/* Extra contrast overlay for mobile */}
+                        <div className="absolute inset-0 bg-gradient-to-r from-[#0c1322]/90 via-[#0c1322]/50 to-transparent sm:hidden" />
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="absolute top-0 right-0 p-8 opacity-20 transform translate-x-4 -translate-y-4">
+                      <ActiveIcon className="w-48 h-48" />
+                    </div>
+                  )}
+
+                  <div className="relative z-10 max-w-sm md:max-w-md">
+                    <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight drop-shadow-sm">
                       {activeDiv.name}
                     </h2>
-                    <p className="text-lg text-slate-300 max-w-xl leading-relaxed font-medium">
+                    <p className="text-lg text-slate-300 leading-relaxed font-medium">
                       {activeDiv.description}
                     </p>
                   </div>
