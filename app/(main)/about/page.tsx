@@ -6,38 +6,44 @@ import { Users, Target, Rocket } from "lucide-react";
 
 const pengurus = [
   // Badan Pengurus Inti
-  { name: "Nizar Qashid", role: "Ketua Himpunan", category: "BPI", image: "https://ui-avatars.com/api/?name=Nizar+Qashid&background=6366f1&color=fff&size=500", bio: "Memimpin dan mengayomi seluruh elemen himpunan.", techStack: ["Leadership", "Management"] },
-  { name: "Feby Rizki Muharram", role: "Wakil Ketua", category: "BPI", image: "https://ui-avatars.com/api/?name=Feby&background=4f46e5&color=fff&size=500", bio: "Mendampingi ketua dan memastikan roda organisasi berjalan.", techStack: ["Problem Solving"] },
-  { name: "Zulfa Naura", role: "Sekretaris 1", category: "BPI", image: "https://ui-avatars.com/api/?name=Zulfa+Naura&background=312e81&color=fff&size=500", bio: "Mengelola administrasi dan persuratan organisasi.", techStack: ["Administration", "Docs"] },
-  { name: "Syifa Aisyah", role: "Sekretaris 2", category: "BPI", image: "https://ui-avatars.com/api/?name=Syifa+Aisyah&background=312e81&color=fff&size=500", bio: "Mengelola administrasi dan kearsipan himpunan.", techStack: ["Administration", "Notion"] },
-  { name: "Afra Nur Rafifah", role: "Bendahara", category: "BPI", image: "https://ui-avatars.com/api/?name=Afra+Nur&background=1e1b4b&color=fff&size=500", bio: "Mengatur dan mengawasi sirkulasi keuangan HMIF.", techStack: ["Finance", "Excel"] },
+  { name: "Nizar Qashid", role: "Ketua Himpunan", category: "BPI", image: "https://raw.githubusercontent.com/hmif-unm/hmif-assets/refs/heads/main/members/Ketua.JPG", bio: "Memimpin dan mengayomi seluruh elemen himpunan.", techStack: ["Leadership", "Management"] },
+  { name: "Feby Rizki Muharram", role: "Wakil Ketua", category: "BPI", image: "https://raw.githubusercontent.com/hmif-unm/hmif-assets/refs/heads/main/members/Wakil%20Ketua.JPG", bio: "Mendampingi ketua dan memastikan roda organisasi berjalan.", techStack: ["Problem Solving"] },
+  { name: "Zulfa Naura", role: "Sekretaris 1", category: "BPI", image: "https://raw.githubusercontent.com/hmif-unm/hmif-assets/refs/heads/main/members/Sek%20Nau.JPG", bio: "Mengelola administrasi dan persuratan organisasi.", techStack: ["Administration", "Docs"] },
+  { name: "Syifa Aisyah", role: "Sekretaris 2", category: "BPI", image: "https://raw.githubusercontent.com/hmif-unm/hmif-assets/refs/heads/main/members/Sek%20Sipa.JPG", bio: "Mengelola administrasi dan kearsipan himpunan.", techStack: ["Administration", "Notion"] },
+  { name: "Afra Nur Rafifah", role: "Bendahara", category: "BPI", image: "https://raw.githubusercontent.com/hmif-unm/hmif-assets/refs/heads/main/members/Bendahara.JPG", bio: "Mengatur dan mengawasi sirkulasi keuangan HMIF.", techStack: ["Finance", "Excel"] },
   
   // Advisor
-  { name: "Farros Althaf", role: "Advisor Divisi", category: "Advisor", image: "https://ui-avatars.com/api/?name=Farros+Althaf&background=0ea5e9&color=fff&size=500", bio: "Mengkoordinasi sinergi antar divisi.", techStack: ["Advisor", "Agile"] },
+  { name: "Farros Althaf", role: "Advisor Divisi", category: "Advisor", image: "https://raw.githubusercontent.com/hmif-unm/hmif-assets/refs/heads/main/members/Advisor.JPG", bio: "Mengkoordinasi sinergi antar divisi.", techStack: ["Advisor", "Agile"] },
 
   // Koordinator Divisi
-  { name: "M. Guntur Ilham", role: "Koordinator Divisi", category: "Koordinator", image: "https://ui-avatars.com/api/?name=Guntur+Ilham&background=0ea5e9&color=fff&size=500", bio: "Mengkoordinasi sinergi antar divisi.", techStack: ["Coordination", "Agile"] },
-  { name: "Azmi Rama", role: "Koordinator Divisi", category: "Koordinator", image: "https://ui-avatars.com/api/?name=Azmi+Rama&background=0284c7&color=fff&size=500", bio: "Memastikan program kerja tiap divisi berjalan lancar.", techStack: ["Monitoring", "Teamwork"] },
+  { name: "M. Guntur Ilham", role: "Koordinator Divisi", category: "Koordinator", image: "https://raw.githubusercontent.com/hmif-unm/hmif-assets/refs/heads/main/members/Kor%20Guntur.JPG", bio: "Mengkoordinasi sinergi antar divisi.", techStack: ["Coordination", "Agile"] },
+  { name: "Azmi Rama", role: "Koordinator Divisi", category: "Koordinator", image: "https://raw.githubusercontent.com/hmif-unm/hmif-assets/refs/heads/main/members/Kor%20Azmi.JPG", bio: "Memastikan program kerja tiap divisi berjalan lancar.", techStack: ["Monitoring", "Teamwork"] },
 
-  // PIC (Ketua Divisi)
-  { name: "Nurima Agusnita", role: "Ketua Divisi Humas", category: "PIC Divisi", image: "https://ui-avatars.com/api/?name=Nurima+Agusnita&background=10b981&color=fff&size=500", bio: "Menjaga relasi dan komunikasi publik HMIF.", techStack: ["Public Relations", "Communication"] },
-  { name: "Rofi Ahnaf Fahrezi", role: "Ketua Divisi PDD", category: "PIC Divisi", image: "https://ui-avatars.com/api/?name=Rofi+Ahnaf&background=f59e0b&color=fff&size=500", bio: "Menangani publikasi, dekorasi, dan dokumentasi.", techStack: ["Design", "Photography"] },
-  { name: "Reza Rabbani", role: "Ketua Divisi Keilmuan", category: "PIC Divisi", image: "https://ui-avatars.com/api/?name=Reza+Rabbani&background=3b82f6&color=fff&size=500", bio: "Meningkatkan kualitas akademik dan keilmuan mahasiswa.", techStack: ["Education", "Research"] },
-  { name: "Andriyan Maulana", role: "Ketua Divisi R&T", category: "PIC Divisi", image: "https://ui-avatars.com/api/?name=Andriyan+Maulana&background=8b5cf6&color=fff&size=500", bio: "Memimpin riset dan pengembangan teknologi HMIF.", techStack: ["AI", "Software Dev"] },
-  { name: "Ana Aqela S.K", role: "Ketua Divisi Acara", category: "PIC Divisi", image: "https://ui-avatars.com/api/?name=Ana+Aqela&background=ec4899&color=fff&size=500", bio: "Merancang dan mengeksekusi acara-acara besar himpunan.", techStack: ["Event Management", "Planning"] },
+  // PIC (Ketua Divisi / Koordinator Divisi)
+  { name: "Nurima Agusnita", role: "Koordinator Humas", category: "PIC Divisi", image: "https://raw.githubusercontent.com/hmif-unm/hmif-assets/refs/heads/main/members/Kor%20Humas.JPG", bio: "Menjaga relasi dan komunikasi publik HMIF.", techStack: ["Public Relations", "Communication"] },
+  { name: "Rofi Ahnaf Fahrezi", role: "Koordinator PDD", category: "PIC Divisi", image: "https://raw.githubusercontent.com/hmif-unm/hmif-assets/refs/heads/main/members/Kor%20Mekref.JPG", bio: "Menangani publikasi, dekorasi, dan dokumentasi.", techStack: ["Design", "Photography"] },
+  { name: "Reza Rabbani", role: "Koordinator Keilmuan", category: "PIC Divisi", image: "https://raw.githubusercontent.com/hmif-unm/hmif-assets/refs/heads/main/members/Kor%20Keilmuan.JPG", bio: "Meningkatkan kualitas akademik dan keilmuan mahasiswa.", techStack: ["Education", "Research"] },
+  { name: "Andriyan Maulana", role: "Koordinator Ristek", category: "PIC Divisi", image: "https://raw.githubusercontent.com/hmif-unm/hmif-assets/refs/heads/main/members/Kor%20Ristek.JPG", bio: "Memimpin riset dan pengembangan teknologi HMIF.", techStack: ["AI", "Software Dev"] },
+  { name: "Ana Aqela S.K", role: "Koordinator Acara", category: "PIC Divisi", image: "https://raw.githubusercontent.com/hmif-unm/hmif-assets/refs/heads/main/members/Kor%20Acara.JPG", bio: "Merancang dan mengeksekusi acara-acara besar himpunan.", techStack: ["Event Management", "Planning"] },
 ];
 
 export default function AboutPage() {
   return (
     <div className="min-h-screen pb-24">
-      {/* Hero Photo — full bleed, tall */}
-      <section className="relative w-full h-[60vh] min-h-[400px] overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: "url('https://raw.githubusercontent.com/hmif-unm/hmif-assets/refs/heads/main/about_us/DSCF0895.JPG')" }}
-        />
-        {/* only a very subtle bottom fade so the section below reads cleanly */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#060a14]/80 via-transparent to-transparent" />
+      {/* Hero Photo — full bleed with responsive framing and smooth fade out */}
+      <section className="relative w-full overflow-hidden">
+        <div className="relative w-full aspect-[16/9] max-h-[85vh]">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="https://raw.githubusercontent.com/hmif-unm/hmif-assets/refs/heads/main/about_us/Hmif%20Lengkap.JPG"
+            alt="HMIF Anggota Lengkap"
+            className="w-full h-full object-cover object-[center_18%]"
+          />
+          {/* Top subtle shadow for navbar readability */}
+          <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-[#050a14]/60 to-transparent pointer-events-none" />
+          {/* Bottom fade out so there is no cut-off line */}
+          <div className="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-[#050a14] from-10% via-[#050a14]/50 via-50% to-transparent pointer-events-none" />
+        </div>
       </section>
 
       {/* Tentang HMIF — sits below the photo */}
