@@ -12,7 +12,7 @@ const divisions = [
     shortName: "Humas",
     icon: Users,
     image: "https://raw.githubusercontent.com/hmif-unm/hmif-assets/refs/heads/main/divisi/Sie%20Humas.JPG",
-    imagePosition: "object-[center_60%]",
+    imagePosition: "object-[center_58%]",
     imageGlow: "bg-emerald-500/30",
     imageGradient: "from-emerald-600/30 via-emerald-500/10 to-transparent",
     imageTint: "bg-emerald-500/20",
@@ -33,7 +33,7 @@ const divisions = [
     shortName: "PDD",
     icon: Camera,
     image: "https://raw.githubusercontent.com/hmif-unm/hmif-assets/refs/heads/main/divisi/Sie%20Mekref.JPG",
-    imagePosition: "object-[center_50%]",
+    imagePosition: "object-[center_35%]",
     imageGlow: "bg-pink-500/30",
     imageGradient: "from-pink-600/30 via-pink-500/10 to-transparent",
     imageTint: "bg-pink-500/20",
@@ -54,7 +54,7 @@ const divisions = [
     shortName: "Keilmuan",
     icon: BookOpen,
     image: "https://raw.githubusercontent.com/hmif-unm/hmif-assets/refs/heads/main/divisi/Sie%20Keilmuan.JPG",
-    imagePosition: "object-[center_48%]",
+    imagePosition: "object-[center_46%]",
     imageGlow: "bg-blue-500/30",
     imageGradient: "from-blue-600/30 via-blue-500/10 to-transparent",
     imageTint: "bg-blue-500/20",
@@ -75,7 +75,7 @@ const divisions = [
     shortName: "Riset & Tech",
     icon: Rocket,
     image: "https://raw.githubusercontent.com/hmif-unm/hmif-assets/refs/heads/main/divisi/Sie%20Ristek.JPG",
-    imagePosition: "object-[center_55%]",
+    imagePosition: "object-[center_56%]",
     imageGlow: "bg-violet-500/30",
     imageGradient: "from-violet-600/30 via-violet-500/10 to-transparent",
     imageTint: "bg-violet-500/20",
@@ -96,7 +96,7 @@ const divisions = [
     shortName: "Acara",
     icon: Calendar,
     image: "https://raw.githubusercontent.com/hmif-unm/hmif-assets/refs/heads/main/divisi/Sie%20Acara.JPG",
-    imagePosition: "object-[center_65%]",
+    imagePosition: "object-[center_62%]",
     imageGlow: "bg-orange-500/30",
     imageGradient: "from-orange-600/30 via-orange-500/10 to-transparent",
     imageTint: "bg-orange-500/20",
@@ -233,9 +233,9 @@ export default function DivisionsPage() {
                 className="grid grid-cols-1 md:grid-cols-2 gap-6 h-full"
               >
                 {/* Huge Title Card */}
-                <div className={`md:col-span-2 rounded-3xl p-8 md:p-10 relative overflow-hidden border border-white/10 ${activeDiv.glowColor} bg-[#0c1322]/80`}>
+                <div className={`md:col-span-2 min-h-[260px] md:min-h-[290px] flex flex-col justify-center rounded-3xl p-8 md:p-10 relative overflow-hidden border border-white/10 ${activeDiv.glowColor} bg-[#0c1322]/80`}>
                   {"image" in activeDiv && activeDiv.image ? (
-                    <div className="absolute top-0 right-0 bottom-0 w-full sm:w-1/2 md:w-[50%] pointer-events-none overflow-hidden select-none">
+                    <div className="absolute top-0 right-0 bottom-0 w-full sm:w-[55%] md:w-[56%] pointer-events-none overflow-hidden select-none">
                       {/* Division theme background glow */}
                       <div className={`absolute top-1/2 right-4 -translate-y-1/2 w-80 h-80 ${activeDiv.imageGlow} rounded-full blur-3xl`} />
                       <div className={`absolute inset-0 bg-gradient-to-l ${activeDiv.imageGradient}`} />
@@ -244,22 +244,22 @@ export default function DivisionsPage() {
                       <div 
                         className="relative w-full h-full"
                         style={{
-                          maskImage: "linear-gradient(to right, transparent 0%, rgba(0,0,0,0.1) 10%, rgba(0,0,0,0.7) 40%, black 80%)",
-                          WebkitMaskImage: "linear-gradient(to right, transparent 0%, rgba(0,0,0,0.1) 10%, rgba(0,0,0,0.7) 40%, black 80%)"
+                          maskImage: "linear-gradient(to right, transparent 0%, rgba(0,0,0,0.1) 8%, rgba(0,0,0,0.8) 32%, black 55%)",
+                          WebkitMaskImage: "linear-gradient(to right, transparent 0%, rgba(0,0,0,0.1) 8%, rgba(0,0,0,0.8) 32%, black 55%)"
                         }}
                       >
                         <Image
                           src={activeDiv.image as string}
                           alt={`Foto Divisi ${activeDiv.name}`}
                           fill
-                          className={`object-cover ${activeDiv.imagePosition} opacity-35 sm:opacity-60 hover:opacity-80 transition-opacity duration-700`}
+                          className={`object-cover ${activeDiv.imagePosition} opacity-50 sm:opacity-75 hover:opacity-95 transition-opacity duration-700`}
                           sizes="(max-width: 768px) 100vw, 50vw"
                           priority
                         />
 
                         {/* Theme tint atmosphere over image */}
                         <div className={`absolute inset-0 ${activeDiv.imageTint} mix-blend-color`} />
-                        <div className="absolute inset-0 bg-gradient-to-t from-[#0c1322]/70 via-transparent to-[#0c1322]/40" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#0c1322]/50 via-transparent to-[#0c1322]/20" />
                         
                         {/* Extra contrast overlay for mobile */}
                         <div className="absolute inset-0 bg-gradient-to-r from-[#0c1322]/90 via-[#0c1322]/50 to-transparent sm:hidden" />

@@ -19,19 +19,12 @@ export async function GET(req: Request) {
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { nama, umur, asalSekolah, programStudi, nim, alasanMasuk, harapan, nomorTelepon, cabangKampus } = body;
+    const { nama, asalSekolah, programStudi, nim, alasanMasuk, harapan, nomorTelepon, cabangKampus } = body;
 
     // Validate simple required fields
-    if (!nama || !umur || !asalSekolah || !programStudi || !nim || !alasanMasuk || !harapan || !nomorTelepon || !cabangKampus) {
+    if (!nama || !asalSekolah || !programStudi || !nim || !alasanMasuk || !harapan || !nomorTelepon || !cabangKampus) {
       return NextResponse.json(
         { error: "Semua data harus diisi!" },
-        { status: 400 }
-      );
-    }
-
-    if (isNaN(parseInt(umur)) || parseInt(umur) <= 0) {
-      return NextResponse.json(
-        { error: "Umur harus berupa angka yang valid!" },
         { status: 400 }
       );
     }
@@ -59,7 +52,6 @@ export async function POST(req: Request) {
     const newRegistration = await prisma.registration.create({
       data: {
         nama,
-        umur: parseInt(umur),
         asalSekolah,
         programStudi,
         nim,

@@ -2,14 +2,14 @@
 
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Terminal as TerminalIcon } from "lucide-react";
+import { Terminal as TerminalIcon, Undo2 } from "lucide-react";
 
 interface TerminalModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
-type FormFields = "nama" | "umur" | "asalSekolah" | "programStudi" | "nim" | "alasanMasuk" | "harapan" | "nomorTelepon" | "cabangKampus";
+type FormFields = "nama" | "asalSekolah" | "programStudi" | "nim" | "alasanMasuk" | "harapan" | "nomorTelepon" | "cabangKampus";
 
 interface StepQuestion {
   field: FormFields;
@@ -22,7 +22,6 @@ interface StepQuestion {
 
 const initialFormData: Record<FormFields, string> = {
   nama: "",
-  umur: "",
   asalSekolah: "",
   programStudi: "",
   nim: "",
@@ -43,21 +42,6 @@ const questions: StepQuestion[] = [
       }
       if (val.length < 2) {
         return "Error: Nama terlalu pendek.";
-      }
-      return null;
-    }
-  },
-  {
-    field: "umur",
-    label: "Masukkan Umur (Angka):",
-    isNumeric: true,
-    validate: (val: string) => {
-      if (!/^\d+$/.test(val)) {
-        return "Error: Umur harus berupa angka (tidak boleh huruf/teks).";
-      }
-      const num = parseInt(val, 10);
-      if (isNaN(num) || num <= 0 || num > 100) {
-        return "Error: Umur harus berupa angka valid (contoh: 19).";
       }
       return null;
     }
@@ -181,6 +165,28 @@ export function TerminalModal({ isOpen, onClose }: TerminalModalProps) {
     onClose();
   };
 
+  const handleUndo = () => {
+    if (step > 0 && !isSubmitting && !isSuccess) {
+      const prevStep = step - 1;
+      const prevQ = questions[prevStep];
+      const prevVal = formData[prevQ.field] || "";
+
+      let rawVal = prevVal;
+      if (prevQ.field === "cabangKampus") {
+        if (prevVal === "UNM Margonda") rawVal = "1";
+        else if (prevVal === "UNM Jatiwaringin") rawVal = "2";
+        else if (prevVal === "UNM Rawamangun") rawVal = "3";
+      }
+
+      setFormData(prev => ({ ...prev, [prevQ.field]: "" }));
+      setStep(prevStep);
+      setInputVal(rawVal);
+      setValError(null);
+      setSubmitError(null);
+      setTimeout(() => inputRef.current?.focus(), 50);
+    }
+  };
+
   // Auto-focus input when step changes or modal opens
   useEffect(() => {
     if (isOpen && step < questions.length && !isSubmitting && !isSuccess && !submitError) {
@@ -210,6 +216,12 @@ export function TerminalModal({ isOpen, onClose }: TerminalModalProps) {
   };
 
   const handleKeyDown = async (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if ((e.ctrlKey || e.metaKey) && e.key === "z" && inputVal === "") {
+      e.preventDefault();
+      handleUndo();
+      return;
+    }
+
     if (e.key === "Enter") {
       const val = inputVal.trim();
       
@@ -295,17 +307,42 @@ export function TerminalModal({ isOpen, onClose }: TerminalModalProps) {
             onClick={(e) => e.stopPropagation()}
           >
             {/* Terminal Header */}
-            <div className="flex items-center justify-between px-4 py-3 bg-[#161616] border-b border-[#222]">
-              <div className="flex items-center gap-2">
-                <button onClick={handleClose} className="w-3 h-3 rounded-full bg-red-500 hover:bg-red-600 transition-colors" />
-                <div className="w-3 h-3 rounded-full bg-yellow-500" />
-                <div className="w-3 h-3 rounded-full bg-green-500" />
+            <div className="flex items-center justify-between px-4 py-2.5 bg-[#161616] border-b border-[#222]">
+              {/* Only Red Button on the left */}
+              <div className="flex items-center">
+                <button
+                  type="button"
+                  onClick={handleClose}
+                  aria-label="Tutup Terminal"
+                  title="Tutup Terminal"
+                  className="w-3.5 h-3.5 rounded-full bg-red-500 hover:bg-red-600 transition-all cursor-pointer shadow-sm shadow-red-500/30"
+                />
               </div>
+
+              {/* Title in center */}
               <div className="flex items-center gap-2 text-[#888] text-xs font-medium">
                 <TerminalIcon className="w-3.5 h-3.5" />
                 <span>bash — hmif_registration — 80x24</span>
               </div>
-              <div className="w-10" />
+
+              {/* Undo Button on the right */}
+              <div className="flex items-center">
+                <button
+                  type="button"
+                  onClick={handleUndo}
+                  disabled={step === 0 || isSubmitting || isSuccess}
+                  aria-label="Undo input sebelumnya"
+                  title={step === 0 ? "Tidak ada input untuk di-undo" : "Undo input sebelumnya (Ctrl+Z)"}
+                  className={`flex items-center gap-1.5 px-2.5 py-1 rounded text-xs font-mono transition-all duration-200 ${
+                    step > 0 && !isSubmitting && !isSuccess
+                      ? "text-slate-200 hover:text-white bg-white/10 hover:bg-white/20 border border-white/10 active:scale-95 cursor-pointer"
+                      : "text-[#555] bg-transparent border border-transparent cursor-not-allowed opacity-40"
+                  }`}
+                >
+                  <Undo2 className="w-3.5 h-3.5" />
+                  <span>Undo</span>
+                </button>
+              </div>
             </div>
 
             {/* Terminal Body */}

@@ -1,14 +1,27 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Lock, KeyRound, Loader2, Users } from "lucide-react";
+
+interface Registration {
+  id: string;
+  nama: string;
+  nim: string;
+  asalSekolah: string;
+  programStudi: string;
+  nomorTelepon: string;
+  cabangKampus: string;
+  alasanMasuk: string;
+  harapan: string;
+  createdAt: string;
+}
 
 export default function PendaftarPage() {
   const [isAuthorized, setIsAuthorized] = useState(false);
   const [password, setPassword] = useState("");
   const [authError, setAuthError] = useState("");
   
-  const [registrations, setRegistrations] = useState<any[]>([]);
+  const [registrations, setRegistrations] = useState<Registration[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [fetchError, setFetchError] = useState("");
 
@@ -39,8 +52,8 @@ export default function PendaftarPage() {
       
       const data = await res.json();
       setRegistrations(data);
-    } catch (err: any) {
-      setFetchError(err.message);
+    } catch (err: unknown) {
+      setFetchError(err instanceof Error ? err.message : "Gagal mengambil data.");
     } finally {
       setIsLoading(false);
     }
@@ -116,7 +129,6 @@ export default function PendaftarPage() {
                   <th scope="col" className="px-6 py-4">No</th>
                   <th scope="col" className="px-6 py-4 font-bold text-white">Nama Lengkap</th>
                   <th scope="col" className="px-6 py-4">NIM</th>
-                  <th scope="col" className="px-6 py-4">Umur</th>
                   <th scope="col" className="px-6 py-4">Asal Sekolah</th>
                   <th scope="col" className="px-6 py-4">Program Studi</th>
                   <th scope="col" className="px-6 py-4">No Telp</th>
@@ -132,7 +144,6 @@ export default function PendaftarPage() {
                     <td className="px-6 py-4">{index + 1}</td>
                     <td className="px-6 py-4 font-bold text-white whitespace-nowrap">{reg.nama}</td>
                     <td className="px-6 py-4 font-mono text-brand-400">{reg.nim}</td>
-                    <td className="px-6 py-4">{reg.umur}</td>
                     <td className="px-6 py-4">{reg.asalSekolah}</td>
                     <td className="px-6 py-4">{reg.programStudi || "-"}</td>
                     <td className="px-6 py-4 font-mono text-brand-400">{reg.nomorTelepon}</td>
