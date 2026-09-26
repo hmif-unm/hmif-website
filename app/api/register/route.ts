@@ -62,6 +62,70 @@ export async function POST(req: Request) {
       },
     });
 
+    try {
+      await fetch(process.env.DISCORD_WEBHOOK_URL!, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          embeds: [
+            {
+              title: "Anggota Baru HMIF",
+              description:
+                "Ada mahasiswa baru yang bergabung dengan **Himpunan Mahasiswa Informatika (HMIF)**.",
+              fields: [
+                {
+                  name: "Nama Lengkap",
+                  value: nama,
+                  inline: false,
+                },
+                {
+                  name: "NIM",
+                  value: String(nim),
+                  inline: true,
+                },
+                {
+                  name: "Nomor Telepon",
+                  value: nomorTelepon,
+                  inline: true,
+                },
+                {
+                  name: "Program Studi",
+                  value: programStudi,
+                  inline: true,
+                },
+                {
+                  name: "Cabang Kampus",
+                  value: cabangKampus,
+                  inline: true,
+                },
+                {
+                  name: "Alasan Masuk",
+                  value: alasanMasuk,
+                  inline: false,
+                },
+                {
+                  name: "Harapan",
+                  value: harapan,
+                  inline: false,
+                },
+              ],
+              footer: {
+                text: "HMIF • Pendaftaran Anggota Baru",
+              },
+              timestamp: new Date().toISOString(),
+            },
+          ],
+          allowed_mentions: {
+            parse: [],
+          },
+        }),
+      });
+    } catch (error) {
+      console.error("Failed to send Discord webhook:", error);
+    }
+
     return NextResponse.json(
       { message: "Registrasi berhasil disimpan!", data: newRegistration },
       { status: 201 }
